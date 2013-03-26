@@ -27,9 +27,12 @@ FOREIGN KEY FK_POS1_CLI(pos1_idCli) REFERENCES client(cli_id),
 FOREIGN KEY FK_POS1_CPT(pos1_cptNum) REFERENCES compte(com_numero)
 );
 
-CREATE TABLE possede2(
-poss2_moyId INT NOT NULL,
-poss2_numeroCompte INT NOT NULL
+CREATE TABLE posseder2(
+pos2_id INT NOT NULL PRIMARY KEY auto_increment,
+pos2_moyId INT NOT NULL,
+pos2_cptNum INT NOT NULL,
+FOREIGN KEY FK_POS2_MOY(pos2_moyId) REFERENCES moyenPaiement(moy_id),
+FOREIGN KEY FK_POS2_CPT(pos2_cptNum) REFERENCES compte(com_numero)
 );
 
 CREATE TABLE operation(
