@@ -77,7 +77,5 @@ CREATE TABLE typeRecurrence(
 typeR_id INT NOT NULL PRIMARY KEY auto_increment,
 typeR_libelle VARCHAR NOT NULL, 
 typeR_dateRecurence DATE NOT NULL
-typeR_comId INT NOT NULL,
-FOREIGN KEY FK_TYPER_OPE(typeR_comId) REFERENCES operation(ope_id)
 );
 
