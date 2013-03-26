@@ -24,6 +24,5 @@ moy_libelle VARCHAR(25) NOT NULL
 CREATE TABLE possede2(
 poss2_moyId INT NOT NULL,
 poss2_numeroCompte INT NOT NULL
-FOREIGN KEY ('poss2_moyId') REFERENCES 'moyenPaiement' ('moy_id'),
-FOREIGN KEY ('poss2_numeroCompte') REFERENCES 'Compte' ('com_numero')
 );
+
