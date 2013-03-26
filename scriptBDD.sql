@@ -24,17 +24,17 @@ moy_libelle VARCHAR(25) NOT NULL
 CREATE TABLE posseder1(
 pos1_id INT NOT NULL PRIMARY KEY auto_increment,
 pos1_idcli INT,
-pos1_cptNum INT,
+pos1_comNum INT,
 FOREIGN KEY FK_POS1_CLI(pos1_idCli) REFERENCES client(cli_id),
-FOREIGN KEY FK_POS1_CPT(pos1_cptNum) REFERENCES compte(com_numero)
+FOREIGN KEY FK_POS1_com(pos1_comNum) REFERENCES compte(com_numero)
 );
 
 CREATE TABLE posseder2(
 pos2_id INT NOT NULL PRIMARY KEY auto_increment,
 pos2_moyId INT NOT NULL,
-pos2_cptNum INT NOT NULL,
+pos2_comNum INT NOT NULL,
 FOREIGN KEY FK_POS2_MOY(pos2_moyId) REFERENCES moyenPaiement(moy_id),
-FOREIGN KEY FK_POS2_CPT(pos2_cptNum) REFERENCES compte(com_numero)
+FOREIGN KEY FK_POS2_com(pos2_comNum) REFERENCES compte(com_numero)
 );
 
 CREATE TABLE operation(
@@ -71,5 +71,13 @@ eff_comNum INT,
 eff_opId INT,
 FOREIGN KEY FK_EFF_COM(eff_comNum) REFERENCES compte(com_numero),
 FOREIGN KEY FK_EFF_OP(eff_opId) REFERENCES operation(ope_id)
+);
+
+CREATE TABLE typeRecurrence(
+typeR_id INT NOT NULL PRIMARY KEY auto_increment,
+typeR_libelle VARCHAR NOT NULL, 
+typeR_dateRecurence DATE NOT NULL
+typeR_comId INT NOT NULL,
+FOREIGN KEY FK_TYPER_OPE(typeR_comId) REFERENCES operation(ope_id)
 );
 
