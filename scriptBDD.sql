@@ -11,7 +11,9 @@ CREATE TABLE client(
 CREATE TABLE compte(
 com_numero INT NOT NULL PRIMARY KEY auto_increment,
 com_solde FLOAT NOT NULL, 
-com_dateCreation DATE NOT NULL
+com_dateCreation DATE NOT NULL,
+com_idTypeCpt INT,
+FOREIGN KEY FK_CPT_TYPECPT(com_idTypeCpt) REFERENCES typeCompte(typeC_id)
 );
 
 CREATE TABLE moyenPaiement(
@@ -38,7 +40,14 @@ FOREIGN KEY FK_POS2_CPT(pos2_cptNum) REFERENCES compte(com_numero)
 CREATE TABLE operation(
 ope_id INT NOT NULL PRIMARY KEY auto_increment,
 ope_date DATE NOT NULL,
-open_montant FLOAT NOT NULL
+ope_montant FLOAT NOT NULL,
+ope_recu VARCHAR(5),
+ope_idMoy INT,
+ope_idCat INT,
+ope_idType INT,
+FOREIGN KEY FK_OP_MOY(ope_idMoy) REFERENCES moyenPaiement(moy_id),
+FOREIGN KEY FK_OP_CAT(ope_idCat) REFERENCES categorieOperation(cat_id),
+FOREIGN KEY FK_OP_TYPEOP(ope_idType) REFERENCES typeOperation(typeO_id)
 );
 
 CREATE TABLE categorieOperation(
