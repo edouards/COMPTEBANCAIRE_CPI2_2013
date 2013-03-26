@@ -53,4 +53,11 @@ typeC_id INT NOT NULL PRIMARY KEY auto_increment,
 typeC_libelle VARCHAR(25) NOT NULL
 );
 
+CREATE TABLE effectue(
+eff_id INT NOT NULL PRIMARY KEY auto_increment,
+eff_comNum INT,
+eff_opId INT,
+FOREIGN KEY FK_EFF_COM(eff_comNum) REFERENCES compte(com_numero),
+FOREIGN KEY FK_EFF_OP(eff_opId) REFERENCES operation(ope_id)
+);
 
