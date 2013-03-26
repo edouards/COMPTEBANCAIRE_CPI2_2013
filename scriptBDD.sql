@@ -15,3 +15,8 @@ com_numero INT NOT NULL PRIMARY KEY auto_increment,
 com_solde FLOAT NOT NOT NULL, 
 com_dateCreation DATE NOT NULL
 );
+
+CREATE TABLE possede2(
+FOREIGN KEY ('Poss2_moyId') REFERENCES 'moyenPaiement' ('moy_id'),
+FOREIGN KEY ('Poss2_numeroCompte') REFERENCES 'Compte' ('com_numero');
+);
