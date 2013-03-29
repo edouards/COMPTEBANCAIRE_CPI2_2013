@@ -78,3 +78,5 @@ typeR_id INT NOT NULL PRIMARY KEY auto_increment,
 typeR_libelle VARCHAR NOT NULL, 
 typeR_dateRecurence DATE NOT NULL
 );
+
+test
