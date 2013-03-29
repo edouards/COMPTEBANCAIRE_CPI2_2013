@@ -79,3 +79,4 @@ typeR_libelle VARCHAR NOT NULL,
 typeR_dateRecurence DATE NOT NULL
 );
 
+test
