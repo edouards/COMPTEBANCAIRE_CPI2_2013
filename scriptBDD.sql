@@ -8,12 +8,17 @@ CREATE TABLE client(
  cli_prenom VARCHAR(25) NOT NULL
  );
  
+ CREATE TABLE typeCompte(
+typeC_id INT NOT NULL PRIMARY KEY auto_increment,
+typeC_libelle VARCHAR(25) NOT NULL
+);
+
 CREATE TABLE compte(
 com_numero INT NOT NULL PRIMARY KEY auto_increment,
 com_solde FLOAT NOT NULL, 
 com_dateCreation DATE NOT NULL,
 com_idTypeCpt INT,
-FOREIGN KEY FK_CPT_TYPECPT(com_idTypeCpt) REFERENCES typeCompte(typeC_id)
+CONSTRAINT FK_CPT_TYPECPT FOREIGN KEY(com_idTypeCpt) REFERENCES typeCompte(typeC_id)
 );
 
 CREATE TABLE moyenPaiement(
@@ -25,34 +30,16 @@ CREATE TABLE posseder1(
 pos1_id INT NOT NULL PRIMARY KEY auto_increment,
 pos1_idcli INT,
 pos1_comNum INT,
-FOREIGN KEY FK_POS1_CLI(pos1_idCli) REFERENCES client(cli_id),
-FOREIGN KEY FK_POS1_com(pos1_comNum) REFERENCES compte(com_numero)
+CONSTRAINT FK_POS1_CLI FOREIGN KEY (pos1_idCli) REFERENCES client(cli_id),
+CONSTRAINT FK_POS1_com FOREIGN KEY (pos1_comNum) REFERENCES compte(com_numero)
 );
 
 CREATE TABLE posseder2(
 pos2_id INT NOT NULL PRIMARY KEY auto_increment,
 pos2_moyId INT NOT NULL,
 pos2_comNum INT NOT NULL,
-FOREIGN KEY FK_POS2_MOY(pos2_moyId) REFERENCES moyenPaiement(moy_id),
-FOREIGN KEY FK_POS2_com(pos2_comNum) REFERENCES compte(com_numero)
-);
-
-CREATE TABLE operation(
-ope_id INT NOT NULL PRIMARY KEY auto_increment,
-ope_date DATE NOT NULL,
-ope_montant FLOAT NOT NULL,
-ope_recu VARCHAR(5),
-ope_idMoy INT,
-ope_idCat INT,
-ope_idType INT,
-FOREIGN KEY FK_OP_MOY(ope_idMoy) REFERENCES moyenPaiement(moy_id),
-FOREIGN KEY FK_OP_CAT(ope_idCat) REFERENCES categorieOperation(cat_id),
-FOREIGN KEY FK_OP_TYPEOP(ope_idType) REFERENCES typeOperation(typeO_id)
-);
-
-CREATE TABLE categorieOperation(
-cat_id INT NOT NULL PRIMARY KEY auto_increment,
-cat_libelle VARCHAR(25) NOT NULL
+CONSTRAINT FK_POS2_MOY FOREIGN KEY (pos2_moyId) REFERENCES moyenPaiement(moy_id),
+CONSTRAINT FK_POS2_com FOREIGN KEY (pos2_comNum) REFERENCES compte(com_numero)
 );
 
 CREATE TABLE typeOperation(
@@ -60,23 +47,34 @@ typeO_id INT NOT NULL PRIMARY KEY auto_increment,
 TypeO_libelle VARCHAR(25) NOT NULL
 );
 
-CREATE TABLE typeCompte(
-typeC_id INT NOT NULL PRIMARY KEY auto_increment,
-typeC_libelle VARCHAR(25) NOT NULL
+CREATE TABLE categorieOperation(
+cat_id INT NOT NULL PRIMARY KEY auto_increment,
+cat_libelle VARCHAR(25) NOT NULL
+);
+
+CREATE TABLE t0peration(
+ope_id INT NOT NULL PRIMARY KEY auto_increment,
+ope_date DATE NOT NULL,
+ope_montant FLOAT NOT NULL,
+ope_recu VARCHAR(5),
+ope_idMoy INT,
+ope_idCat INT,
+ope_idType INT,
+CONSTRAINT FK_OP_MOY FOREIGN KEY (ope_idMoy) REFERENCES moyenPaiement(moy_id),
+CONSTRAINT FK_OP_CAT FOREIGN KEY (ope_idCat) REFERENCES categorieOperation(cat_id),
+CONSTRAINT FK_OP_TYPEOP FOREIGN KEY (ope_idType) REFERENCES typeOperation(typeO_id)
 );
 
 CREATE TABLE effectue(
 eff_id INT NOT NULL PRIMARY KEY auto_increment,
 eff_comNum INT,
 eff_opId INT,
-FOREIGN KEY FK_EFF_COM(eff_comNum) REFERENCES compte(com_numero),
-FOREIGN KEY FK_EFF_OP(eff_opId) REFERENCES operation(ope_id)
+CONSTRAINT FK_EFF_COM FOREIGN KEY (eff_comNum) REFERENCES compte(com_numero),
+CONSTRAINT FK_EFF_OP FOREIGN KEY (eff_opId) REFERENCES t0peration(ope_id)
 );
 
 CREATE TABLE typeRecurrence(
 typeR_id INT NOT NULL PRIMARY KEY auto_increment,
-typeR_libelle VARCHAR NOT NULL, 
+typeR_libelle VARCHAR(25) NOT NULL, 
 typeR_dateRecurence DATE NOT NULL
 );
-
-test
