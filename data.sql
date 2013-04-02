@@ -18,6 +18,3 @@ INSERT INTO moyenPaiement(moy_libelle)
  VALUES('LIQUIDE');
 INSERT INTO moyenPaiement(moy_libelle)
  VALUES('VIREMENT');
- 
-
- 
