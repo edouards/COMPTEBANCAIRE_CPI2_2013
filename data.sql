@@ -1,0 +1,1 @@
+INSERT INTO client(cli_nom,cli_prenom) VALUES('SOUAN','EDOUARD');
