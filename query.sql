@@ -27,7 +27,7 @@ INSERT INTO posseder2(pos2_moyId,pos2_comNum)
  (SELECT com_numero FROM compte INNER JOIN posseder1 ON com_numero=pos1_comNum INNER JOIN client ON cli_id=pos1_idcli WHERE cli_nom='MACHUT'));
 
 
-##Vérifie si le client existe dans la base de donnée
+<!--Vérifie si le client existe dans la base de donnée -->
 SELECT * FROM client WHERE cli_nom = "MACHUT" AND cli_prenom = "NICOLAS";
 
 
@@ -51,7 +51,10 @@ SELECT com_decouvertAutorise FROM compte WHERE com_numero = 0145368534041;
 ##Affichage de l historique des opérations en fonction du numero de compte
 
 
-##Création d une opération
+##Création d une opération, ope_recu ??????????
+Le compte a créditer ou débiter ??????
+INSERT INTO t0peration (ope_date, ope_montant, ope_idMoy, ope_idCat, ope_idType)
+VALUES();
 
 
 
