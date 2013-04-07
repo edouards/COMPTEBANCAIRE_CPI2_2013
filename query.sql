@@ -54,7 +54,7 @@ SELECT com_decouvertAutorise FROM compte WHERE com_numero = 0145368534041;
 ##Création d une opération, ope_recu ??????????
 Le compte a créditer ou débiter ??????
 INSERT INTO t0peration (ope_date, ope_montant, ope_idMoy, ope_idCat, ope_idType)
-VALUES();
+VALUES("2013/04/01", "150.00", 1, );
 
 
 
