@@ -61,7 +61,7 @@ CREATE TABLE operations(
 ope_id INT NOT NULL PRIMARY KEY auto_increment,
 ope_date DATE NOT NULL,
 ope_montant FLOAT NOT NULL,
-ope_recu VARCHAR(5),
+ope_recu INT,
 ope_idMoy INT,
 ope_idCat INT,
 ope_idType INT,
