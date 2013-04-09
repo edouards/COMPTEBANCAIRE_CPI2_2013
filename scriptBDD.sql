@@ -16,6 +16,7 @@ CREATE TABLE compte(
 com_numero varchar(13) NOT NULL PRIMARY KEY,
 com_solde FLOAT NOT NULL, 
 com_dateCreation DATE NOT NULL,
+com_decouvertAutorise float NOT NULL,
 com_idTypeCpt INT,
 CONSTRAINT FK_CPT_TYPECPT FOREIGN KEY(com_idTypeCpt) REFERENCES typeCompte(typeC_id)
 );
