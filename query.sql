@@ -48,6 +48,13 @@ SELECT com_solde FROM compte WHERE com_numero = 0145368534041;
 ##Affichage du decouvert autorisé en fonction du nemero de compte
 SELECT com_decouvertAutorise FROM compte WHERE com_numero = 0145368534041;
 
+##Ajout d une operation
+INSERT INTO operation(ope_date, ope_montant, ope_recu, ope_idMoy, ope_idCat, ope_idType)
+VALUES('2012/09/11','120.00', '', '0', '0', '6');
+INSERT INTO effectue(eff_comNum, eff_opId)
+VALUES('6457934526', 2);
+
+
 ##Affichage de l historique des opérations en fonction du numero de compte
 
 
