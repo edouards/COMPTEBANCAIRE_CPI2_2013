@@ -46,7 +46,7 @@ VALUES('Alimentaire'),
 ('Automobile'),
 ('Loyer'),
 ('Telephonie'),
-('Drogue'),
+('Drogues'),
 ('High Tech'),
 ('Vacance'),
 ('Autre');
