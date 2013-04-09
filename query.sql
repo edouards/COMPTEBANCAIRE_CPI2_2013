@@ -60,7 +60,7 @@ VALUES('6457934526', 2);
 
 ##Création d une opération, ope_recu ??????????
 Le compte a créditer ou débiter ??????
-INSERT INTO t0peration (ope_date, ope_montant, ope_idMoy, ope_idCat, ope_idType)
+INSERT INTO operations (ope_date, ope_montant, ope_idMoy, ope_idCat, ope_idType)
 VALUES("2013/04/01", "150.00", 1, );
 
 
