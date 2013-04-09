@@ -18,3 +18,7 @@ SELECT com_solde FROM compte WHERE com_numero = 0145368534041;
 
 ##Affichage du decouvert autorisé en fonction du nemero de compte
 SELECT com_decouvertAutorise FROM compte WHERE com_numero = 0145368534041;
+
+##Historique des mouvements sur un compte client
+SELECT * FROM operations
+WHERE ope_id IN (SELECT eff_opId FROM effectue WHERE eff_comNum= 6457934526);
