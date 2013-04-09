@@ -4,6 +4,12 @@ VALUES('SOUAN','EDOUARD'),
 ('LECUAONA', 'PATRICE'),
 ('DYLAN','BOB'),
 ('OUADOUDI','LOUBNA');
+
+INSERT INTO typeCompte(typeC_libelle)
+VALUES('COURANT'),
+('Livret Jeune'),
+('Livret A'),
+('P.E.L');
  
 INSERT INTO compte(com_numero, com_solde, com_dateCreation, com_idTypeCpt)
 VALUES('0685493486','150.00', '2012/03/23', 0),
@@ -25,13 +31,7 @@ VALUES('0', '0685493486'),
 ('2','4839274637'),
 ('3','4637846573'),
 ('3','3849274839'),
-('4','6735467684')
-
-INSERT INTO typeCompte(typeC_libelle)
-VALUES('COURANT'),
-('Livret Jeune'),
-('Livret A'),
-('P.E.L');
+('4','6735467684');
 
 INSERT INTO moyenPaiement(moy_libelle)
 VALUES('CB'),
@@ -39,6 +39,27 @@ VALUES('CB'),
 ('ESPECE'),
 ('CARAMBAR'),
 ('VIREMENT');
+
+INSERT INTO posseder2(pos2_moyId,pos2_comNum)
+ VALUES((SELECT moy_id FROM moyenPaiement WHERE moy_libelle='CB'),
+ (SELECT com_numero FROM compte INNER JOIN posseder1 ON com_numero=pos1_comNum INNER JOIN client 
+ ON cli_id=pos1_idcli WHERE cli_nom='MACHUT'));
+ 
+ INSERT INTO posseder2(pos2_moyId,pos2_comNum)
+ VALUES((SELECT moy_id FROM moyenPaiement WHERE moy_libelle='CHEQUE'),
+ (SELECT com_numero FROM compte INNER JOIN posseder1 ON com_numero=pos1_comNum INNER JOIN client 
+ ON cli_id=pos1_idcli WHERE cli_nom='MACHUT'));
+ 
+ INSERT INTO typeOperation(typeO_libelle)
+VALUES('Debits'),
+('Credits'),
+('Cheque emis'),
+('Remise de cheque'),
+('Virement'),
+('Prelevement'),
+('Facture CB'),
+('Retrait Espece'),
+('Autre');
 
 INSERT INTO categorieOperation(cat_libelle)
 VALUES('Alimentaire'),
@@ -49,17 +70,6 @@ VALUES('Alimentaire'),
 ('Drogues'),
 ('High Tech'),
 ('Vacance'),
-('Autre');
-
-INSERT INTO typeOperation(typeO_libelle)
-VALUES('Debits'),
-('Credits'),
-('Cheque emis'),
-('Remise de cheque'),
-('Virement'),
-('Prelevement'),
-('Facture CB'),
-('Retrait Espece'),
 ('Autre');
 
 INSERT INTO operations(ope_date, ope_montant, ope_recu, ope_idMoy, ope_idCat, ope_idType)
