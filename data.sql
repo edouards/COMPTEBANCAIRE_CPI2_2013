@@ -96,12 +96,17 @@ VALUES('2012/09/11','120.00', '', 1, 1, 7);
 INSERT INTO operations (ope_date, ope_montant, ope_idMoy, ope_idCat, ope_idType)
 VALUES("2013/04/01", "150.00", 4,6,9 );
 
+
 INSERT INTO operations(ope_date, ope_montant, ope_recu, ope_idMoy, ope_idCat, ope_idType)
 VALUES('2012/09/11','120.00', '', 1, 1, 6),
 ('2013/01/03' , '17.25', '', 2, 9, 3),
 ('2005/04/02' , '550.00', '', 5, 4, 5),
 ('2013/01/05', '600.00', '', 3, 6, 8),
-('2007/10/18', '25.10', '', 4, 1, 6);
+('2007/10/18', '25.10', '', 4, 1, 6),
+('2013/04/12','234.00','', 2, 3, 4, 3),
+('2013/02/12','2340.00','', 2, 3, 4, 3);
 
 INSERT INTO effectue(eff_comNum, eff_opId)
-VALUES('6457934526', 2);
+VALUES('6457934526', 2),
+('6457934526', 8),
+('6457934526', 9);
