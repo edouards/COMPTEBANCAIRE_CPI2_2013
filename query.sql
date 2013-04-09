@@ -20,5 +20,10 @@ SELECT com_solde FROM compte WHERE com_numero = 0145368534041;
 SELECT com_decouvertAutorise FROM compte WHERE com_numero = 0145368534041;
 
 ##Historique des mouvements sur un compte client
-SELECT * FROM operations
-WHERE ope_id IN (SELECT eff_opId FROM effectue WHERE eff_comNum= 6457934526);
+SELECT ope_date as DateOperation, ope_montant as Montant, moy_libelle as MoyenPaiement, cat_libelle as CategorieOperation, typeO_libelle as TypeOperation
+FROM operations
+INNER JOIN moyenPaiement ON moy_id=ope_idMoy
+INNER JOIN categorieOperation ON cat_id=ope_idCat
+INNER JOIN typeOperation ON typeO_id=ope_idType
+WHERE ope_id IN (SELECT eff_opId FROM effectue WHERE eff_comNum= 6457934526)
+AND YEAR(ope_date)=YEAR(current_date) AND MONTH(ope_date)=MONTH(current_date);
