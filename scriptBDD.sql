@@ -57,10 +57,6 @@ typeR_libelle VARCHAR(25) NOT NULL,
 typeR_dateRecurence DATE NOT NULL
 );
 
-CREATE TABLE categorieOperation(
-cat_id INT NOT NULL PRIMARY KEY auto_increment, 
-cat_libelle VARCHAR(10) NOT NULL
-);
 CREATE TABLE operations(
 ope_id INT NOT NULL PRIMARY KEY auto_increment,
 ope_date DATE NOT NULL,
